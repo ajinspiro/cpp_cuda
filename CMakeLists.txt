@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10.0)
+project(cpp_basics VERSION 0.1.0 LANGUAGES C CXX)
+
+add_executable(SumMeanStdDeviationCppArray SumMeanStdDeviationCppArray.cpp)
+add_executable(SumMeanStdDeviationCppPointers SumMeanStdDeviationCppPointers.cpp)
+add_executable(SumMeanStdDeviationCppTemplateLib SumMeanStdDeviationCppTemplateLib.cpp)

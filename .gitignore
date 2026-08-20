@@ -1,2 +1,25 @@
-bin
-obj
+# CMake build output
+/build/
+
+# Visual Studio user settings
+.vs/
+
+# Compiled binaries and intermediate files
+*.exe
+*.dll
+*.obj
+*.pdb
+*.ilk
+*.lib
+*.exp
+*.tlog
+
+# CMake user-specific configuration
+CMakeUserPresets.json
+
+# VS Code local settings
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
