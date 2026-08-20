@@ -1,4 +1,47 @@
-### Find the sum, mean and standard deviation of a set of numbers read from command line using C++ pointers
+# A collection of C++ programs
+
+In this file, I would like to demostrate some statistics related simple math programs using C++.
+
+### Find the sum, mean and standard deviation of a set of numbers read from command line using C++ arrays
+
+```cpp
+#include <iostream>
+#include <string>
+#include <cmath>
+
+int main(int argc, char* argv[])
+{
+	if (argc < 3) { // exe name and 2 operands is min
+		std::cerr << "SumAndAvgUsingArray: Improper usage. Need at least 2 operands." << std::endl;
+		return EXIT_FAILURE;
+	}
+	float store[50] = {}, sum = 0.0, avg = 0.0, std_dev_tempstore[50] = {}, std_dev_tempsum = 0.0, std_dev = 0.0;
+	for (int i = 1; i <= argc - 1; i++)
+	{
+		std::string numString = argv[i];
+		float num = std::stof(numString);
+		store[i - 1] = num;
+	}
+	for (size_t i = 0; i < argc - 1; i++)
+	{
+		sum += store[i];
+	}
+	avg = sum / (argc - 1);
+	for (size_t i = 0; i < argc - 1; i++)
+	{
+		std_dev_tempstore[i] = std::pow((store[i] - avg), 2);
+	}
+	for (size_t i = 0; i < argc - 1; i++)
+	{
+		std_dev_tempsum += std_dev_tempstore[i];
+	}
+	std_dev = std::sqrt(std_dev_tempsum / (argc - 1));
+	std::cout << "Sum: " << sum << " " << "Avg: " << avg << " " << "Std dev:" << std_dev << std::endl;
+	return EXIT_SUCCESS;
+}
+```
+
+### Same program using C++ pointers
 
 ```cpp
 #include <iostream>
@@ -20,7 +63,6 @@ int main(int argc, char **argv)
     float sum = 0.0, mean = 0.0, std_dev = 0.0;
     for (size_t i = 1; i < argc; i++)
     {
-        // std::cout << argv[i] << std::endl;
         float num = std::stof(argv[i]);
         sum += num;
         store[i - 1] = num;
@@ -110,5 +152,4 @@ int main(int argc, char **argv)
     auto b_mag = std::sqrt(std::pow(vector_store[1][0], 2) + std::pow(vector_store[1][1], 2));
     std::cout << "CosineSimilarity: " << dot_product / (a_mag * b_mag) << std::endl;
 }
-
 ```
