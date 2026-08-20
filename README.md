@@ -150,6 +150,7 @@ int main(int argc, char **argv)
     // Step 2: Find magnitudes of each vector
     auto a_mag = std::sqrt(std::pow(vector_store[0][0], 2) + std::pow(vector_store[0][1], 2));
     auto b_mag = std::sqrt(std::pow(vector_store[1][0], 2) + std::pow(vector_store[1][1], 2));
+    // Step 3: Divide
     std::cout << "CosineSimilarity: " << dot_product / (a_mag * b_mag) << std::endl;
 }
 ```
