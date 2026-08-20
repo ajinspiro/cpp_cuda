@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 		std_dev_tempsum += std_dev_tempstore[i];
 	}
 	std_dev = std::sqrt(std_dev_tempsum / (argc - 1));
-	std::cout << "Sum: " << sum << " " << "Avg: " << avg << " " << "Std dev:" << std_dev << std::endl;
+	std::cout << "Sum: " << sum << " " << "Avg: " << avg << " " << "Std dev: " << std_dev << std::endl;
 	return EXIT_SUCCESS;
 }
 ```
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
     std_dev = std::sqrt(std_dev);
     std::cout << "Sum: " << sum << std::endl
               << "Mean: " << mean << std::endl
-              << "SD:" << std_dev << std::endl;
+              << "SD :" << std_dev << std::endl;
 }
 ```
 
@@ -116,7 +116,7 @@ int main(int argc, char **argv)
 
     std::cout << "Sum: " << sum << std::endl
               << "Mean: " << mean << std::endl
-              << "SD:" << std_dev << std::endl;
+              << "SD :" << std_dev << std::endl;
 }
 ```
 

@@ -30,5 +30,5 @@ int main(int argc, char **argv)
     std_dev = std::sqrt(std_dev);
     std::cout << "Sum: " << sum << std::endl
               << "Mean: " << mean << std::endl
-              << "SD:" << std_dev << std::endl;
+              << "SD: " << std_dev << std::endl;
 }
