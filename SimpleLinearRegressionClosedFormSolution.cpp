@@ -3,8 +3,10 @@
 #include <string>
 #include <string_view>
 #include <vector>
+#include <numeric>
+#include <algorithm>
 
-// sample input (1,2) (-2,3)
+// sample input (1,2) (-2,3) (5,6)
 int main(void)
 {
     std::cout << "Linear regression: Enter data set in the format (x,y) (x,y) (x,y). The format is whitespace sensitive."
@@ -12,6 +14,8 @@ int main(void)
               << "> ";
     std::string input = {};
     std::vector<std::tuple<double, double>> dataset = {};
+    std::tuple<double, double> x_y_sum_pair = {};
+    double x_mean = 0.0, y_mean = 0.0;
     std::getline(std::cin, input);
     auto input_parts = input | std::views::split(' ');
     for (auto parenthesised_cordinate_pair : input_parts)
@@ -34,6 +38,26 @@ int main(void)
             }
         }
     }
-
+    x_y_sum_pair = std::reduce(
+        dataset.begin(),
+        dataset.end(),
+        std::tuple<double, double>(0, 0),
+        [](std::tuple<double, double> cordinate_1, std::tuple<double, double> cordinate_2)
+        {
+            return std::tuple<double, double>(std::get<0>(cordinate_1) + std::get<0>(cordinate_2), std::get<1>(cordinate_1) + std::get<1>(cordinate_2));
+        });
+    x_mean = std::get<0>(x_y_sum_pair) / dataset.size();
+    y_mean = std::get<1>(x_y_sum_pair) / dataset.size();
+    std::cout << "x mean: " << x_mean << std::endl
+              << "y mean: " << y_mean << std::endl;
+    double sum_xy = std::transform_reduce(
+        dataset.begin(),
+        dataset.end(),
+        0.0,                                       // reduce start value
+        std::plus<>(),                             // reduce operation
+        [](std::tuple<double, double> cordinate) { // transform operation
+            return std::get<0>(cordinate) * std::get<1>(cordinate);
+        });
+    std::cout << "sum XiYi: " << sum_xy << std::endl;
     return EXIT_SUCCESS;
 }
