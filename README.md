@@ -155,7 +155,7 @@ int main(int argc, char **argv)
 }
 ```
 
-Find beta_0 and beta_1 (Linear regression closed form solution)
+### Find beta_0 and beta_1 (Linear regression closed form solution)
 
 ```cpp
 #include <ranges>
