@@ -5,6 +5,7 @@
 #include <vector>
 #include <numeric>
 #include <algorithm>
+#include <cmath>
 
 // sample input (1,2) (-2,3) (5,6)
 int main(void)
@@ -15,7 +16,7 @@ int main(void)
     std::string input = {};
     std::vector<std::tuple<double, double>> dataset = {};
     std::tuple<double, double> x_y_sum_pair = {};
-    double x_mean = 0.0, y_mean = 0.0;
+    double sum_x = 0.0, sum_y = 0.0, sum_x_squred = 0.0, sum_xy = 0.0, beta_0 = 0.0, beta_1 = 0.0, y_mean = 0.0, x_mean = 0.0;
     std::getline(std::cin, input);
     auto input_parts = input | std::views::split(' ');
     for (auto parenthesised_cordinate_pair : input_parts)
@@ -46,11 +47,9 @@ int main(void)
         {
             return std::tuple<double, double>(std::get<0>(cordinate_1) + std::get<0>(cordinate_2), std::get<1>(cordinate_1) + std::get<1>(cordinate_2));
         });
-    x_mean = std::get<0>(x_y_sum_pair) / dataset.size();
-    y_mean = std::get<1>(x_y_sum_pair) / dataset.size();
-    std::cout << "x mean: " << x_mean << std::endl
-              << "y mean: " << y_mean << std::endl;
-    double sum_xy = std::transform_reduce(
+    sum_x = std::get<0>(x_y_sum_pair);
+    sum_y = std::get<1>(x_y_sum_pair);
+    sum_xy = std::transform_reduce(
         dataset.begin(),
         dataset.end(),
         0.0,                                       // reduce start value
@@ -58,6 +57,20 @@ int main(void)
         [](std::tuple<double, double> cordinate) { // transform operation
             return std::get<0>(cordinate) * std::get<1>(cordinate);
         });
-    std::cout << "sum XiYi: " << sum_xy << std::endl;
+    sum_x_squred = std::transform_reduce(
+        dataset.begin(),
+        dataset.end(),
+        0.0,
+        std::plus<>(),
+        [](std::tuple<double, double> cordinate)
+        {
+            return std::pow(std::get<0>(cordinate), 2);
+        });
+    beta_1 = ((dataset.size() * sum_xy) - (sum_x * sum_y)) / ((dataset.size() * sum_x_squred) - std::pow(sum_x, 2));
+    x_mean = sum_x / dataset.size();
+    y_mean = sum_y / dataset.size();
+    std::cout << "beta 1: " << beta_1 << std::endl;
+    beta_0 = y_mean - (beta_1 * x_mean);
+    std::cout << "beta 0: " << beta_0 << std::endl;
     return EXIT_SUCCESS;
 }
