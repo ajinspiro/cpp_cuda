@@ -2,6 +2,7 @@
 #include <string>
 #include <cmath>
 
+// sample input command line args>CosineSimilarity 1,2 2,3
 int main(int argc, char **argv)
 {
     std::cout << "Hello, from CosineSimilarity!\n";

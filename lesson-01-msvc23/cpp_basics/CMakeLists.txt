@@ -1,10 +1,19 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(cpp_basics VERSION 0.1.0 LANGUAGES C CXX)
+project(cpp_basics VERSION 0.1.0 LANGUAGES C CXX CUDA)
+find_package(CUDAToolkit REQUIRED)
+
+set(CMAKE_CUDA_ARCHITECTURES 86)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CUDA_STANDARD 20)
+set(CMAKE_CUDA_STANDARD_REQUIRED ON)
 
 add_executable(SumMeanStdDeviationCppArray SumMeanStdDeviationCppArray.cpp)
 add_executable(SumMeanStdDeviationCppPointers SumMeanStdDeviationCppPointers.cpp)
 add_executable(SumMeanStdDeviationCppTemplateLib SumMeanStdDeviationCppTemplateLib.cpp)
 add_executable(CosineSimilarity CosineSimilarity.cpp)
 add_executable(SimpleLinearRegressionClosedFormSolution SimpleLinearRegressionClosedFormSolution.cpp)
+add_executable(CUDAHello CUDAHello.cu)
+add_executable(CUDA_cuBLAS_Example CUDA_cuBLAS_Example.cu)
+
+target_link_libraries(CUDA_cuBLAS_Example PRIVATE CUDA::cublas)
