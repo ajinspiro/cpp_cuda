@@ -26,14 +26,14 @@ int main(int, char **)
 {
     // -------------------------------------------------------------
     // System we are solving:
-    //   2x + 1y = 5
-    //   1x + 3y = 10
-    // Column-major A: [2, 1, 1, 3]
+    //   1x - 1y = -1
+    //   2x - 1y = 0
+    // Column-major A: [1, 2, -1, -1]
     // -------------------------------------------------------------
     const int n = 2;
-    float host_matrixA[n * n] = {2.0f, 1.0f,
-                                 1.0f, 3.0f};
-    float host_matrixB[n] = {5.0f, 10.0f};
+    float host_matrixA[n * n] = {1.0f, 2.0f,
+                                 -1.0f, -1.0f};
+    float host_matrixB[n] = {-1.0f, 0.0f};
 
     cusolverDnHandle_t cusolver_handle;
     check_cusolver(cusolverDnCreate(&cusolver_handle), "Handle creation failed.");
