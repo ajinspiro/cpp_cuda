@@ -13,4 +13,4 @@ In this file, I would like to demostrate some statistics and matrices related si
 4. Solve a system of linear equations using matrices ($X = A^{-1}B$) //_code:TODO_
     - nVIDIA cuSOLVER solution ([code](https://github.com/ajinspiro/cpp_cuda/blob/main/lesson-01-msvc23/cpp_basics/CUDA_cuSOLVER_SolveMatrix.cu))
 5. Matrix addition //_code:TODO_
-    - nVIDIA cuBLAS solution (code)
+    - nVIDIA cuBLAS solution ([code](https://github.com/ajinspiro/cpp_cuda/blob/main/lesson-01-msvc23/cpp_basics/CUDA_cuBLAS_MatrixAddition.cu))
