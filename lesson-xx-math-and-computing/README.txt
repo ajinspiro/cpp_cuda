@@ -1,0 +1,1 @@
+Group, ring, field, abelian group => how these allow parellelism in computing stuff like matrix addition
