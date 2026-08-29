@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(cpp_graphics main.cpp)
 add_executable(MFCClock WIN32 MFCClock.cpp)
+add_executable(MFCClockMatrixTransformationPipeline WIN32 MFCClockMatrixTransformationPipeline.cpp)
 target_compile_definitions(MFCClock PRIVATE _AFXDLL)
+target_compile_definitions(MFCClockMatrixTransformationPipeline PRIVATE _AFXDLL)
