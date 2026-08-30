@@ -5,9 +5,6 @@
 #include <variant>
 #include <cuda_runtime.h>
 #include <cublas_v2.h>
-#define IDX2C(i, j, ld) ((j) * (ld) + (i)) // indexing for column major ordering
-
-// INCOMPLETE -- dont run this program
 
 struct DUError
 {
@@ -115,18 +112,15 @@ int main(int, char **)
     // Copying result from GPU to host
     float *host_matrixC = new float[order_n * order_n];
     check_cuda(cudaMemcpy(host_matrixC, device_matrixC, matrix_bytes, cudaMemcpyDeviceToHost), "Copying result to host failed.");
-    // for (size_t i = 0; i < order_n; i++)
-    // {
-    //     for (size_t j = 0; j < order_n; j++)
-    //     {
-    //         std::cout << "\t" << *(host_matrixC + IDX2C(i, j, order_n));
-    //     }
-    //     std::cout << std::endl;
-    // }
     // Printing result matrixC
-    for (size_t i = 0; i < order_n * order_n; i++)
+    std::cout << "Result:" << std::endl;
+    for (size_t i = 0; i < order_n; i++)
     {
-        std::cout << "\t" << *(host_matrixC + i) << "\t";
+        for (size_t j = 0; j < order_n * order_n; j += order_n)
+        {
+            std::cout << "\t" << *(host_matrixC + i + j);
+        }
+        std::cout << std::endl;
     }
     cudaFree(device_matrixA);
     cudaFree(device_matrixB);
