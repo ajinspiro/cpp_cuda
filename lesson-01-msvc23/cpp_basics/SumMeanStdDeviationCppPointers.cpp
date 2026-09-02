@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <cstring>
 
 // Program to find the sum, mean and standard deviation of an array of numbers using pointers.
 int main(int argc, char **argv)
 {
-    std::cout << "Hello, from SumMeanStdDeviationCppPointers!\n";
     if (argc < 3)
     {
         std::cout << "SumMeanStdDeviationCppPointers: invalid usage. Provide at least 2 numbers as inputs in command line." << std::endl;
@@ -31,4 +31,6 @@ int main(int argc, char **argv)
     std::cout << "Sum: " << sum << std::endl
               << "Mean: " << mean << std::endl
               << "SD: " << std_dev << std::endl;
+    free(store);
+    return EXIT_SUCCESS;
 }

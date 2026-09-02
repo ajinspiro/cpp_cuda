@@ -126,6 +126,9 @@ int main(int, char **)
     cudaFree(device_matrixB);
     cudaFree(device_matrixC);
     cublasDestroy(cublas_handle);
+    delete host_matrixA;
+    delete host_matrixB;
+    delete host_matrixC;
     return EXIT_SUCCESS;
 }
 /*

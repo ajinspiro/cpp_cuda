@@ -2,7 +2,7 @@
 #include <string>
 #include <cmath>
 
-#define ARRAY_SIZE 3
+#define ARRAY_SIZE 50
 
 int main(int argc, char *argv[])
 {

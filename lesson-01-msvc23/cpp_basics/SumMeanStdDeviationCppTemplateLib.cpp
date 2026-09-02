@@ -6,7 +6,6 @@
 
 int main(int argc, char **argv)
 {
-    std::cout << "Hello, from SumMeanStdDeviationCppTemplateLib!" << std::endl;
     if (argc < 3)
     {
         std::cout << "SumMeanStdDeviationCppTemplateLib: invalid usage. Provide at least 2 numbers as inputs in command line." << std::endl;
