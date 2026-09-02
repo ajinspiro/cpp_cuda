@@ -95,8 +95,8 @@ struct EventData
 
 extern "C" __declspec(dllexport) bool __cdecl PutEventData(EventData *ptr)
 {
-    printf("%s: %s\n", "PutEventData\0", ptr->Message);
-    printf("%s: %d\n", "PutEventData\0", ptr->I);
+    printf("%s: %s\n", "PutEventData", ptr->Message);
+    printf("%s: %d\n", "PutEventData", ptr->I);
     return false;
 }
 

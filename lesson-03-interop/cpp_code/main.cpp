@@ -4,7 +4,6 @@ extern "C" __declspec(dllimport) int __cdecl Add(int a, int b);
 extern "C" __declspec(dllimport) size_t __cdecl StrLenA(char *r);
 extern "C" __declspec(dllimport) size_t __cdecl StrLenW(wchar_t *r);
 extern "C" __declspec(dllimport) int __cdecl MinArray(int *pData, int length);
-extern "C" __declspec(dllexport) bool __cdecl StringCopy(char *dest, int dest_size, const char *src);
 
 struct EventData
 {
@@ -22,7 +21,7 @@ int main(int, char **)
     std::cout << "Sum of " << a << ", " << b << " = " << c << std::endl;
 
     // StrLenA
-    char name_ansi[] = "arun kumar\0";
+    char name_ansi[] = "arun kumar";
     size_t name_len_ansi = StrLenA(name_ansi);
     std::cout << "ANSI string length of '" << name_ansi << "' = " << name_len_ansi << std::endl;
 
@@ -41,7 +40,7 @@ int main(int, char **)
     std::cout << "\b \b" << "] = " << int_arr_min << std::endl;
 
     // PutEventData
-    char event_data_message[] = "MicroSoft Visual C++\0";
+    char event_data_message[] = "MicroSoft Visual C++";
     EventData ed = {};
     ed.I = 123;
     ed.Message = event_data_message;
@@ -60,7 +59,7 @@ int main(int, char **)
     NumberTransformer(create_cubes);
 
     // StringCopy
-    char source[] = "arun kumar\0", destination[sizeof(source)] = {};
+    char source[] = "arun kumar", destination[sizeof(source)] = {};
     bool result = StringCopy(destination, sizeof(destination), source);
     std::cout << "StringCopy: Result=" << result << " Destination=" << destination << std::endl;
     
