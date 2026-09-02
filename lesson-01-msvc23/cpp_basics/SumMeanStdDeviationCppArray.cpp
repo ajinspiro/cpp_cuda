@@ -2,14 +2,16 @@
 #include <string>
 #include <cmath>
 
+#define ARRAY_SIZE 3
+
 int main(int argc, char *argv[])
 {
-    if (argc < 3)
-    { // exe name and 2 operands is min
-        std::cerr << "SumMeanStdDeviationCppArray: Improper usage. Need at least 2 operands." << std::endl;
+    if (argc < 3 || argc > ARRAY_SIZE)
+    {
+        std::cerr << "SumMeanStdDeviationCppArray: Improper usage. Minumem 2 operands and maximum " << ARRAY_SIZE << " operands." << std::endl;
         return EXIT_FAILURE;
     }
-    float store[50] = {}, sum = 0.0, avg = 0.0, std_dev_tempstore[50] = {}, std_dev_tempsum = 0.0, std_dev = 0.0;
+    double store[ARRAY_SIZE] = {}, sum = 0.0, avg = 0.0, std_dev_tempstore[ARRAY_SIZE] = {}, std_dev_tempsum = 0.0, std_dev = 0.0;
     for (int i = 1; i <= argc - 1; i++)
     {
         std::string numString = argv[i];
