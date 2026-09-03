@@ -2,10 +2,9 @@
 #include <string>
 #include <cmath>
 
-// sample input command line args>CosineSimilarity 1,2 2,3
+// sample command line input args>CosineSimilarity 1,2 2,3
 int main(int argc, char **argv)
 {
-    std::cout << "Hello, from CosineSimilarity!\n";
     if (argc != 3)
     {
         std::cout << "CosineSimilarity: invalid usage. Provide 2 vectors as inputs in command line." << std::endl;
