@@ -2,11 +2,9 @@
 // https://github.com/praseedpai/NativeInterfaceJavaCsharp/blob/master/cpp_code.cpp
 // Original cpp_code.cpp has been modified for x64 use here.
 
-#include <stdio.h>
+#include <cstdio>
 #include <cstring>
 #include <windows.h>
-
-using namespace std;
 
 ////////////////////////////////////////
 //
@@ -40,6 +38,11 @@ extern "C" __declspec(dllexport) size_t __cdecl StrLenW(wchar_t *r)
 //
 extern "C" __declspec(dllexport) int __cdecl MinArray(int *pData, int length)
 {
+    if (length <= 0)
+    {
+        printf("Length is invalid - exiting...\n");
+        exit(EXIT_FAILURE);
+    }
     int minData = pData[0];
     for (int pos = 1; pos < length; pos++)
     {
@@ -58,6 +61,11 @@ extern "C" __declspec(dllexport) int __cdecl MinArray(int *pData, int length)
 //
 extern "C" __declspec(dllexport) double __cdecl MinArrayD(double *pData, int length)
 {
+    if (length <= 0)
+    {
+        printf("Length is invalid - exiting...\n");
+        exit(EXIT_FAILURE);
+    }
     double minData = pData[0];
     for (int pos = 1; pos < length; pos++)
     {
@@ -75,6 +83,11 @@ extern "C" __declspec(dllexport) double __cdecl MinArrayD(double *pData, int len
 //
 extern "C" __declspec(dllexport) double __cdecl Average(double *pData, int length)
 {
+    if (length <= 0)
+    {
+        printf("Length is invalid - exiting...\n");
+        exit(EXIT_FAILURE);
+    }
     double minData = pData[0];
     for (int pos = 1; pos < length; pos++)
     {

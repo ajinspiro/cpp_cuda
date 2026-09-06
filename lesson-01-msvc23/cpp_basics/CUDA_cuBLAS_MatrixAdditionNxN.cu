@@ -74,12 +74,18 @@ T read_number_from_stdin(std::string error_message)
     return value;
 }
 
+constexpr unsigned int MAX_ORDER = 10000;
+
 int main(int, char **)
 {
     std::cout << "CUDA_cuBLAS_MatrixAdditionNxN: Performs NxN matrix addition." << std::endl;
     std::cout << "Enter order (N) of matrices (both matrices must be square matrices and must have the same order): ";
     unsigned int order_n = read_number_from_stdin<unsigned int>("Invalid input for matrix order");
-    unsigned int matrix_bytes = order_n * order_n * sizeof(float);
+    if (order_n > MAX_ORDER)
+    {
+        std::cout << "CUDA_cuBLAS_MatrixAdditionNxN: The order you entered is too high. Max allowed value is 10,000. Exiting..." << std::endl;
+    }
+    size_t matrix_bytes = static_cast<size_t>(order_n) * static_cast<size_t>(order_n) * sizeof(float);
     // Reading matrix A
     float *host_matrixA = new float[order_n * order_n];
     std::cout << "Input matrixA (column major ordering, newline separated): ";
@@ -126,9 +132,9 @@ int main(int, char **)
     cudaFree(device_matrixB);
     cudaFree(device_matrixC);
     cublasDestroy(cublas_handle);
-    delete host_matrixA;
-    delete host_matrixB;
-    delete host_matrixC;
+    delete[] host_matrixA;
+    delete[] host_matrixB;
+    delete[] host_matrixC;
     return EXIT_SUCCESS;
 }
 /*
